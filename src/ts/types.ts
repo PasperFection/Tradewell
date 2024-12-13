@@ -129,6 +129,34 @@ export interface OrderFill {
     feeCurrency: string;
 }
 
+export interface SecurityConfig {
+    API_RATE_LIMIT: number;
+    API_TIMEOUT: number;
+    MAX_RETRY_ATTEMPTS: number;
+    WS_HEARTBEAT_INTERVAL: number;
+    WS_RECONNECT_DELAY: number;
+    WS_MAX_RECONNECT_ATTEMPTS: number;
+    INPUT_VALIDATION: {
+        PAIR_REGEX: RegExp;
+        MAX_ORDER_SIZE_BTC: number;
+        MIN_ORDER_SIZE_EUR: number;
+        PRICE_DECIMALS: number;
+    };
+    CONTENT_SECURITY: {
+        ALLOWED_DOMAINS: string[];
+        SANITIZE_OPTIONS: {
+            ALLOWED_TAGS: string[];
+            ALLOWED_ATTR: string[];
+        };
+    };
+    STORAGE: {
+        ENCRYPTION_ALGORITHM: string;
+        KEY_LENGTH: number;
+        SALT_LENGTH: number;
+        IV_LENGTH: number;
+    };
+}
+
 export class ApiError extends Error {
     constructor(
         public statusCode: number,
