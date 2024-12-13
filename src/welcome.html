@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welkom bij Tradewell</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--bg-color);
+        }
+
+        .welcome-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-header h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .setup-steps {
+            margin: 30px 0;
+        }
+
+        .setup-step {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .setup-step h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .setup-step p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .api-instructions {
+            background: #e8f5e9;
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning {
+            background: #fff3e0;
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .next-steps {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="welcome-header">
+            <h1>Welkom bij Tradewell</h1>
+            <p>Je persoonlijke trading assistent voor Bitvavo</p>
+        </div>
+
+        <div class="setup-steps">
+            <div class="setup-step">
+                <h3>1. API Configuratie</h3>
+                <p>Om te beginnen heb je een Bitvavo API-sleutel nodig:</p>
+                <div class="api-instructions">
+                    <ol>
+                        <li>Log in op je Bitvavo account</li>
+                        <li>Ga naar API-instellingen</li>
+                        <li>Maak een nieuwe API-sleutel aan</li>
+                        <li>Zorg dat de volgende rechten zijn ingeschakeld:
+                            <ul>
+                                <li>READ - Voor het lezen van marktgegevens</li>
+                                <li>TRADE - Voor het uitvoeren van trades</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <h3>2. Veiligheidsinstellingen</h3>
+                <p>Tradewell heeft verschillende veiligheidsmaatregelen ingebouwd:</p>
+                <ul>
+                    <li>Maximale ordergrootte limiet</li>
+                    <li>Stop-loss bescherming</li>
+                    <li>Dagelijkse handelslimiet</li>
+                </ul>
+                <div class="warning">
+                    <strong>Let op:</strong> Bewaar je API-sleutel en geheim veilig. Deel deze nooit met anderen.
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <h3>3. Handelsstrategieën</h3>
+                <p>Kies uit verschillende handelsstrategieën:</p>
+                <ul>
+                    <li><strong>Trendvolgend</strong> - Volgt markttrends voor langere termijn trades</li>
+                    <li><strong>Mean Reversion</strong> - Handelt op basis van prijsafwijkingen van het gemiddelde</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <p>Klaar om te beginnen?</p>
+            <button id="startSetup" class="btn-primary">Start Configuratie</button>
+        </div>
+    </div>
+
+    <script src="js/welcome.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradewell - Bitvavo Trading Bot</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tradewell</h1>
+            <div class="api-status" id="apiStatus">Niet verbonden</div>
+        </header>
+
+        <section class="trading-strategy">
+            <h2>Handelsstrategie</h2>
+            <select id="strategySelect">
+                <option value="trend">Trendvolgend</option>
+                <option value="meanReversion">Mean Reversion</option>
+            </select>
+        </section>
+
+        <section class="market-data">
+            <h2>Marktgegevens</h2>
+            <div class="balance-info">
+                <div>Saldo: <span id="balance">Laden...</span></div>
+                <div>Actief handelspaar: <span id="activePair">BTC-EUR</span></div>
+            </div>
+        </section>
+
+        <section class="controls">
+            <button id="startBot" class="btn primary">Start Bot</button>
+            <button id="stopBot" class="btn danger" disabled>Stop Bot</button>
+            <button id="settings" class="btn secondary">Instellingen</button>
+        </section>
+
+        <section class="status">
+            <div id="statusMessages" class="status-messages"></div>
+        </section>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/strategies.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html>

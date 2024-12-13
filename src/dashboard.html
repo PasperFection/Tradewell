@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradewell Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Tradewell Dashboard</h1>
+            <div class="portfolio-summary">
+                <div class="total-value">
+                    <span>Totale Waarde:</span>
+                    <span id="totalValue">€0.00</span>
+                </div>
+                <div class="daily-change">
+                    <span>24u Verandering:</span>
+                    <span id="dailyChange">0.00%</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Portfolio Overzicht -->
+            <section class="dashboard-card portfolio-overview">
+                <h2>Portfolio Samenstelling</h2>
+                <canvas id="portfolioChart"></canvas>
+                <div class="asset-list" id="assetList"></div>
+            </section>
+
+            <!-- Performance Metrics -->
+            <section class="dashboard-card performance-metrics">
+                <h2>Performance Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <label>ROI (30d)</label>
+                        <span id="roi30d">0.00%</span>
+                    </div>
+                    <div class="metric">
+                        <label>Win/Loss Ratio</label>
+                        <span id="winLossRatio">0.00</span>
+                    </div>
+                    <div class="metric">
+                        <label>Sharpe Ratio</label>
+                        <span id="sharpeRatio">0.00</span>
+                    </div>
+                    <div class="metric">
+                        <label>Max Drawdown</label>
+                        <span id="maxDrawdown">0.00%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actieve Strategieën -->
+            <section class="dashboard-card active-strategies">
+                <h2>Actieve Strategieën</h2>
+                <div class="strategy-list" id="strategyList"></div>
+            </section>
+
+            <!-- Recent Trades -->
+            <section class="dashboard-card recent-trades">
+                <h2>Recente Trades</h2>
+                <div class="trades-table-container">
+                    <table id="recentTrades">
+                        <thead>
+                            <tr>
+                                <th>Tijd</th>
+                                <th>Pair</th>
+                                <th>Type</th>
+                                <th>Prijs</th>
+                                <th>Hoeveelheid</th>
+                                <th>Resultaat</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Market Analysis -->
+            <section class="dashboard-card market-analysis">
+                <h2>Markt Analyse</h2>
+                <canvas id="marketChart"></canvas>
+                <div class="market-indicators">
+                    <div class="indicator">
+                        <label>RSI</label>
+                        <span id="rsiValue">0.00</span>
+                    </div>
+                    <div class="indicator">
+                        <label>MACD</label>
+                        <span id="macdValue">0.00</span>
+                    </div>
+                    <div class="indicator">
+                        <label>Volume</label>
+                        <span id="volumeValue">0.00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Risk Management -->
+            <section class="dashboard-card risk-management">
+                <h2>Risico Management</h2>
+                <div class="risk-metrics">
+                    <div class="risk-metric">
+                        <label>Open Posities</label>
+                        <span id="openPositions">0</span>
+                    </div>
+                    <div class="risk-metric">
+                        <label>Margin Gebruikt</label>
+                        <span id="marginUsed">0.00%</span>
+                    </div>
+                    <div class="risk-metric">
+                        <label>Dagelijks Verlies Limiet</label>
+                        <div class="progress-bar">
+                            <div id="lossLimitProgress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Notificatie Center -->
+        <div id="notificationCenter" class="notification-center">
+            <!-- Notificaties worden hier dynamisch toegevoegd -->
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <h2>Dashboard Instellingen</h2>
+                <form id="settingsForm">
+                    <div class="settings-group">
+                        <h3>Notificaties</h3>
+                        <label>
+                            <input type="checkbox" name="tradeNotifications">
+                            Trade Notificaties
+                        </label>
+                        <label>
+                            <input type="checkbox" name="alertNotifications">
+                            Prijs Alerts
+                        </label>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Risico Parameters</h3>
+                        <label>
+                            Max Verlies per Trade
+                            <input type="number" name="maxLossPerTrade" min="0" max="100" step="0.1">%
+                        </label>
+                        <label>
+                            Dagelijkse Verlies Limiet
+                            <input type="number" name="dailyLossLimit" min="0" max="1000" step="10">€
+                        </label>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit">Opslaan</button>
+                        <button type="button" class="cancel">Annuleren</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="ts/dashboard.js"></script>
+</body>
+</html>
