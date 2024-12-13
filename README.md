@@ -1,4 +1,4 @@
-# Tradewell - Bitvavo Trading Bot
+# Tradewell - Bitvavo Trading Bot (Chrome extensie)
 
 Een veilige en gebruiksvriendelijke browser-extensie voor geautomatiseerd handelen op het Bitvavo platform.
 
