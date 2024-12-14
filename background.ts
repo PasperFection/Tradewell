@@ -4,8 +4,11 @@ import { PerformanceMonitor } from './performance/PerformanceMonitor';
 import { RiskManager } from './risk/RiskManager';
 import { StrategyFactory } from './strategies/StrategyFactory';
 import { loadApiCredentials } from './api';
-import { bitvavo } from './api';
+import { BitvavoAPI } from './api';
 import { CONFIG } from './config';
+import { CredentialService } from './services/CredentialService';
+import { SecurityService } from './security/SecurityService';
+import { Database } from './database.types';
 
 // Service Worker setup
 const ALARM_NAME = 'tradewellUpdate';
