@@ -7,31 +7,35 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist/js",
-    "rootDir": "./src",
+    "rootDir": "./",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "preserve",
     "lib": [
       "ES2020",
       "DOM",
-      "DOM.Iterable",
-      "WebWorker",
-      "WebWorker.ImportScripts"
+      "DOM.Iterable"
     ],
     "types": [
       "chrome",
       "jest",
-      "webextension-polyfill"
+      "webextension-polyfill",
+      "node"
     ],
     "typeRoots": [
       "./node_modules/@types",
-      "./src/ts/types"
+      "types"
     ],
-    "strictPropertyInitialization": false
+    "allowJs": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"]
+    }
   },
   "include": [
     "src/**/*"
-  ],
+, "database.types.ts", "ts", "__tests__", "api", "backtesting", "components", "config", "performance", "risk", "security", "services", "strategies", "trading", "types", "websocket"  ],
   "exclude": [
     "node_modules",
     "dist"

@@ -14,6 +14,7 @@ export interface TradingStrategyConfig {
 }
 
 export interface Config {
+    STORAGE_KEY(apiKey: string, STORAGE_KEY: any): unknown;
     API_URL: string;
     WS_URL: string;
     DEFAULT_PAIR: string;
@@ -51,6 +52,8 @@ export interface Trade {
 }
 
 export interface Order {
+    orderType: any;
+    amountQuote: any;
     id: string;
     timestamp: number;
     market: string;
@@ -133,27 +136,59 @@ export interface SecurityConfig {
     API_RATE_LIMIT: number;
     API_TIMEOUT: number;
     MAX_RETRY_ATTEMPTS: number;
+    API_SECRET: string;
+    
     WS_HEARTBEAT_INTERVAL: number;
     WS_RECONNECT_DELAY: number;
     WS_MAX_RECONNECT_ATTEMPTS: number;
+    
     INPUT_VALIDATION: {
         PAIR_REGEX: RegExp;
         MAX_ORDER_SIZE_BTC: number;
         MIN_ORDER_SIZE_EUR: number;
         PRICE_DECIMALS: number;
     };
+    
     CONTENT_SECURITY: {
         ALLOWED_DOMAINS: string[];
+        CSP_DIRECTIVES: {
+            'default-src': string[];
+            'script-src': string[];
+            'style-src': string[];
+            'connect-src': string[];
+            'img-src': string[];
+            'font-src': string[];
+            'object-src': string[];
+            'base-uri': string[];
+            'frame-ancestors': string[];
+            'form-action': string[];
+            'upgrade-insecure-requests': string[];
+        };
         SANITIZE_OPTIONS: {
             ALLOWED_TAGS: string[];
             ALLOWED_ATTR: string[];
         };
     };
+    
+    SECURITY_HEADERS: {
+        'Strict-Transport-Security': string;
+        'X-Content-Type-Options': string;
+        'X-Frame-Options': string;
+        'X-XSS-Protection': string;
+        'Referrer-Policy': string;
+        'Permissions-Policy': string;
+    };
+    
     STORAGE: {
         ENCRYPTION_ALGORITHM: string;
         KEY_LENGTH: number;
         SALT_LENGTH: number;
         IV_LENGTH: number;
+        KEY_DERIVATION: {
+            ITERATIONS: number;
+            MEMORY_COST: number;
+            PARALLELISM: number;
+        };
     };
 }
 
@@ -166,4 +201,29 @@ export class ApiError extends Error {
         super(message);
         this.name = 'ApiError';
     }
+}
+
+export class SecurityError extends Error {
+    constructor(
+        public code: string,
+        public message: string,
+        public details?: Record<string, unknown>
+    ) {
+        super(message);
+        this.name = 'SecurityError';
+        Object.setPrototypeOf(this, SecurityError.prototype);
+    }
+}
+
+export interface RequestValidation {
+    timestamp: string;
+    signature: string;
+    origin: string;
+}
+
+export interface SecurityLog {
+    level: 'info' | 'warn' | 'error';
+    message: string;
+    timestamp: number;
+    context?: Record<string, unknown>;
 }

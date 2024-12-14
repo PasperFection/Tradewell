@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Supabase
+**/supabase/.temp/
+**/supabase/.branches/
+**/supabase/config.toml
+
+# IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+
+# System Files
+.DS_Store
+Thumbs.db

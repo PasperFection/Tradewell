@@ -4,6 +4,8 @@ export interface Config {
     API_URL: string;
     WS_URL: string;
     DEFAULT_PAIR: string;
+    API_KEY: string;
+    API_SECRET: string;
     TRADING_STRATEGIES: {
         rsi: {
             name: string;
@@ -49,6 +51,8 @@ export const CONFIG: Config = {
     API_URL: 'https://api.bitvavo.com/v2',
     WS_URL: 'wss://ws.bitvavo.com/v2',
     DEFAULT_PAIR: 'BTC-EUR',
+    API_KEY: process.env.BITVAVO_API_KEY || '',
+    API_SECRET: process.env.BITVAVO_API_SECRET || '',
     TRADING_STRATEGIES: {
         rsi: {
             name: 'RSI Strategy',

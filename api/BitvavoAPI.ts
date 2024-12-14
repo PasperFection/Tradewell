@@ -1,7 +1,7 @@
 import { Order, Trade } from '../types';
 
 export interface BitvavoAPI {
-    placeOrder(market: string, side: 'buy' | 'sell', amount: number, price?: number): Promise<Order>;
+    placeOrder(market: string, side: 'buy' | 'sell', amount: string, price?: string): Promise<Order>;
     getBalance(symbol: string): Promise<{ available: number; inOrder: number }>;
     getTicker(market: string): Promise<{ lastPrice: number; volume: number }>;
     getTrades(market: string, limit?: number): Promise<Trade[]>;
